@@ -3,7 +3,7 @@ entries:
   mariadb:
   - apiVersion: v2
     appVersion: "11.7"
-    created: "2025-02-23T19:40:45.741128633Z"
+    created: "2025-02-23T19:52:40.65628338Z"
     description: A Helm chart for Kubernetes
     digest: 808c253aa984a7866fe777d2637db93d025f80ba7b07c0ba163f7350103315ac
     name: mariadb
@@ -14,12 +14,12 @@ entries:
   wordpress:
   - apiVersion: v2
     appVersion: main
-    created: "2025-02-23T19:40:45.741454401Z"
+    created: "2025-02-23T19:52:40.656603882Z"
     description: A Helm chart for Kubernetes
-    digest: 48f507f2e67e00e5cdc85a85d29b25a8ae01bad0b63e43c261771292452721bd
+    digest: 565e8c5bd345097390915d048d3249d0420ff686d6962286b60c952742099046
     name: wordpress
     type: application
     urls:
     - https://fedos1993.github.io/helm-repo-project/helm-releases/wordpress-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-23T19:40:45.740744726Z"
+generated: "2025-02-23T19:52:40.655870405Z"
