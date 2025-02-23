@@ -1,0 +1,18 @@
+projectName: mariadb
+
+replicaCount: 1
+
+image:
+  repository: mariadb
+
+service:
+  type: ClusterIP
+  port: 3306
+  targetPort: 3306
+
+ingress:
+  enabled: false
+
+persistence:
+  size: 3Gi
+  storageClass: "nfs-client"

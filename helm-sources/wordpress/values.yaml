@@ -1,0 +1,59 @@
+replicaCount: 1
+
+image:
+  repository: denis93f/wordpress
+  tag: "main"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/server-alias: "project.k8s-14.sa"
+  hosts:
+    - host: project.k8s-13.sa
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+livenessProbe:
+  httpGet:
+    path: /wp-login.php
+    port: 80
+  initialDelaySeconds: 120
+  periodSeconds: 20
+  timeoutSeconds: 5
+  failureThreshold: 6
+readinessProbe:
+  httpGet:
+    path: /wp-login.php
+    port: 80
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+volumes:
+  - name: wp-storage
+    persistentVolumeClaim:
+    claimName: wp-pvc
+
+volumeMounts:
+  - name: wp-storage
+    mountPath: /var/www/html
+
+persistence:
+  size: 2Gi
+  storageClass: nfs-client
